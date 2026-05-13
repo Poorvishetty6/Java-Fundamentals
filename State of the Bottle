@@ -1,0 +1,61 @@
+class Bottle{
+    String brand;
+    String color;
+    int volume;
+    
+    //states:
+    boolean isEmpty=true;
+    boolean isFull=false;
+    boolean isOpen=false;
+    boolean isClosed=true;
+    int currentVolume=0;
+    public Bottle(String brand,String color,int volume){
+        this.brand=brand;
+        this.color=color;
+        this.volume=volume;
+    }
+    
+    public void openCap(){
+        System.out.println(" Opening cap");
+        this.isOpen=true;
+        this.isClosed=false;
+    }
+    public void closeCap(){
+        System.out.println(" closing cap");
+        this.isOpen=false;
+        this.isClosed=true;
+    }
+    public void drinkWater(int volume){
+        System.out.println(" drink water :"+volume+"ml");
+        this.currentVolume-=volume;
+        this.currentVolume=Math.max(this.currentVolume,0);
+        this.isFull= volume>0?false:this.isFull;
+        this.isEmpty= currentVolume==0?true:this.isEmpty;
+    }
+    public void fillWater(int volume){
+        System.out.println(" Fill water :"+volume+"ml");
+        this.currentVolume+=volume;
+        this.currentVolume=Math.min(this.currentVolume,this.volume);
+        this.isFull= this.currentVolume==this.volume?true:this.isFull;
+        this.isEmpty= volume>0?false:this.isEmpty;
+    }
+    public void display(){
+        System.out.printf("%s\t%s\t%d\t%d\t%b\t%b\t%b\t%b\n",this.brand,this.color,this.volume,this.currentVolume,this.isOpen,this.isClosed,this.isFull,this.isEmpty);
+    }
+}
+class Main {
+    public static void main(String[] args){
+        Bottle b1=new Bottle("Milton"," Black",750);
+        b1.display();
+        b1.openCap();
+        b1.display();
+        b1.fillWater(300);
+        b1.display();
+        b1.drinkWater(200);
+        b1.display();
+        b1.fillWater(1000);
+        b1.display();
+        b1.closeCap();
+        b1.display();
+    }
+}
