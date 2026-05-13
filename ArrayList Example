@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner s =new Scanner(System.in);
+        int n = s.nextInt();
+        ArrayList<ArrayList<Integer>> nums = new ArrayList<>();
+        for(int i=0;i<n;i++){
+            int d =  s.nextInt();
+            ArrayList<Integer> rows = new ArrayList<>();
+            for(int j=0;j<d;j++){
+                rows.add(s.nextInt());
+            }
+            nums.add(rows);
+        }
+        Integer q = s.nextInt();
+        for(int i=0;i<q;i++){
+            Integer x = s.nextInt();
+            Integer y = s.nextInt();
+            if(x-1<n && y-1 < nums.get(x-1).size()){
+                System.out.println(nums.get(x-1).get(y-1));
+            }
+            else{
+                System.out.println("ERROR!");
+            }
+        }
+    }
+}
