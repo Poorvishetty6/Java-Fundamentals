@@ -1,0 +1,33 @@
+class Student {
+    String name;
+    int id;
+    static int count=0;
+    int total;
+    // Constructor
+    Student(String name) {
+        this.name = name;
+        incrementStudentCount();
+        this.id = this.count;
+    }
+    static void incrementStudentCount(){
+        count++;
+    }
+    void display() {
+        System.out.println("Name:\t" +name+ "\tID:\t"+id);
+    }
+    public static int getStudentCount(){
+        return count;
+    }
+
+    public static void main(String[] args) {
+        
+        Student s1 = new Student("Vishnu");
+        Student s2 = new Student("Tommy");
+        Student s3 = new Student("Raman");
+        
+        s1.display();
+        s2.display();
+        s3.display();
+        System.out.println("Total students:"+ Student.getStudentCount());
+    }
+}
