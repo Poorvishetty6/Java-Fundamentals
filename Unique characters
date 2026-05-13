@@ -1,0 +1,15 @@
+import java.util.*;
+
+class Solution{
+
+    public static void main(String[] args) 
+    {
+        String str="statements";
+        HashSet<Character> hs = new HashSet<>();
+        for(char ch:str.toCharArray()){
+            hs.add(ch);
+        }
+        System.out.println("number of unique characters: " + hs.size());
+        System.out.println("unique Elements: " + hs);
+    }
+}
